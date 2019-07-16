@@ -214,7 +214,7 @@ def sample_beam(ev_seqs, params, working_dir, punct_dict_file=None,
     tune_scale = hypparam_collector.add_param('Tune the scale of Gauss?', params.get('tune_scale', 'False')=='True') # tune
     #  the
     # scale
-    D = hypparam_collector.add_param('Depth', int(params.get('d', 1)))
+    D = hypparam_collector.add_param('Depth', int(params.get('d', -1)))
     iters = hypparam_collector.add_param('Total iterations', int(params.get('iters')))
     max_num_per_batch = hypparam_collector.add_param('Max batch size', max(1, int(params.get('max_num_per_batch', 1))))
 
@@ -378,7 +378,7 @@ def sample_beam(ev_seqs, params, working_dir, punct_dict_file=None,
     hypparam_collector.add_param('Number of batches', len(batches))
 
     optimizer_name = hypparam_collector.add_param('Optimizer', params.get('optimizer', 'Adam'))
-    batch_average = hypparam_collector.add_param('Batch average loss', params.get('batch_average', 'batch')) # batch,
+    batch_average = hypparam_collector.add_param('Batch average loss', params.get('batch_average', 'sentence')) # batch,
     # sentence, none
     loss_multiplier = hypparam_collector.add_param('Loss multiplier', int(params.get('loss_multiplier', 1))) # batch,
 
